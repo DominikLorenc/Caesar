@@ -1,2 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #444;
+  display: grid;
+}
+
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */
