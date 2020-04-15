@@ -117,9 +117,34 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"main.js":[function(require,module,exports) {
+})({"caesar13.js":[function(require,module,exports) {
+"use strict";
 
-},{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function ceszar(str) {
+  console.log(str);
+}
+
+var _default = ceszar;
+exports.default = _default;
+},{}],"main.js":[function(require,module,exports) {
+"use strict";
+
+var _caesar = _interopRequireDefault(require("./caesar13"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var inputText = document.querySelector('.input');
+var form = document.querySelector('.form-wrap');
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  inputText.value = '';
+});
+},{"./caesar13":"caesar13.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -147,7 +172,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60316" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64152" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
