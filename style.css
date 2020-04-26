@@ -87,10 +87,18 @@ h1 {
   border: 2px solid grey;
   border-radius: 10px;
   transform: translate(-50%, 50vh);
+  padding: 0 10px;
 }
 
-.result.active{
+.result.active {
   animation: resultAnimation 0.5s linear both;
+}
+
+.result-text {
+  font-size: 28px;
+  color: black;
+  text-align: center;
+  line-height: 70px;
 }
 
 @keyframes resultAnimation {

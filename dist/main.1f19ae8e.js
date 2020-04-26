@@ -125,11 +125,58 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-function ceszar(str) {
-  console.log(str);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+var result = document.querySelector(".result");
+var resultText = document.querySelector(".result-text");
+var encryptionString = [];
+
+function caesar(str) {
+  var regex = /^[a-zA-Z0-9 ]*$/;
+
+  if (str === "" || !regex.test(str)) {
+    showResult();
+    throw new Error('value must be a string');
+  }
+
+  encryptionStr(str);
+  showResult(encryptionString.join(""));
 }
 
-var _default = ceszar;
+function encryptionStr(str) {
+  var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+  _toConsumableArray(str).forEach(function (el) {
+    var indexEl = alphabet.indexOf(el.toUpperCase());
+
+    if (indexEl >= 0) {
+      var indexElemnetInAlphabeth = (indexEl + 13) % alphabet.length;
+
+      if (el === el.toLowerCase()) {
+        encryptionString.push(alphabet[indexElemnetInAlphabeth].toLowerCase());
+      } else {
+        encryptionString.push(alphabet[indexElemnetInAlphabeth]);
+      }
+    } else {
+      encryptionString.push(el);
+    }
+  });
+}
+
+function showResult() {
+  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "wpidz ciąg znaków";
+  result.classList.add("active");
+  resultText.textContent = text;
+  encryptionString = [];
+}
+
+var _default = caesar;
 exports.default = _default;
 },{}],"main.js":[function(require,module,exports) {
 "use strict";
@@ -138,11 +185,13 @@ var _caesar = _interopRequireDefault(require("./caesar13"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var inputText = document.querySelector('.input');
-var form = document.querySelector('.form-wrap');
-form.addEventListener('submit', function (e) {
+var result = document.querySelector(".result");
+var inputText = document.querySelector(".input");
+var form = document.querySelector(".form-wrap");
+form.addEventListener("submit", function (e) {
   e.preventDefault();
-  inputText.value = '';
+  (0, _caesar.default)(inputText.value);
+  inputText.value = "";
 });
 },{"./caesar13":"caesar13.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -172,7 +221,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64152" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60472" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

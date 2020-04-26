@@ -1,10 +1,12 @@
-import ces from './caesar13'
+import caesar from "./caesar13";
 
-const inputText = document.querySelector('.input');
-const form = document.querySelector('.form-wrap');
+const result = document.querySelector(".result");
 
+const inputText = document.querySelector(".input");
+const form = document.querySelector(".form-wrap");
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    inputText.value = '';
-})
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  caesar(inputText.value);
+  inputText.value = "";
+});
