@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"caesar13.js":[function(require,module,exports) {
+})({"modules/caesar13.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -181,7 +181,7 @@ exports.default = _default;
 },{}],"main.js":[function(require,module,exports) {
 "use strict";
 
-var _caesar = _interopRequireDefault(require("./caesar13"));
+var _caesar = _interopRequireDefault(require("./modules/caesar13"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -193,7 +193,7 @@ form.addEventListener("submit", function (e) {
   (0, _caesar.default)(inputText.value);
   inputText.value = "";
 });
-},{"./caesar13":"caesar13.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./modules/caesar13":"modules/caesar13.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
