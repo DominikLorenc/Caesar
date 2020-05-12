@@ -1,4 +1,4 @@
-import caesar from "./modules/caesar13";
+import caesar from "/modules/caesar13";
 
 const result = document.querySelector(".result");
 
