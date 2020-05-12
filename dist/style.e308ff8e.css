@@ -82,7 +82,7 @@ h1 {
   left: 50%;
   top: 50%;
   min-width: 400px;
-  height: 70px;
+  min-height: 70px;
   background-color: rgba(255, 255, 255, 0.8);
   border: 2px solid grey;
   border-radius: 10px;
@@ -95,10 +95,16 @@ h1 {
 }
 
 .result-text {
+  padding: 10px;
   font-size: 28px;
   color: black;
   text-align: center;
-  line-height: 70px;
+  
+}
+
+.result-text.v{
+  color: red;
+  font-size: 24px;
 }
 
 @keyframes resultAnimation {

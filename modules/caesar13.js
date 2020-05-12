@@ -4,16 +4,27 @@ const resultText = document.querySelector(".result-text");
 let encryptionString = [];
 
 function caesar(str) {
+  const validateStatus = validateInput(str);
+  if (!validateStatus) encryptionStr(str)
+ 
+}
+
+function validateInput(str) {
   const regex = /^[a-zA-Z0-9 ]*$/;
 
-  if (str === "" || !regex.test(str)) {
-    showResult();
-    throw new Error('value must be a string')
-  }
+  let status;
+  if (!str.length > 0) {
+    status = true;
+    resultText.textContent = showResult("Nic nie wpisałeś", true);
+  } else if (!regex.test(str)) {
+    status = true;
+    resultText.textContent = showResult(
+      "tekst nie może zawierac polskich znaków i znaków specjalnych",
+      true
+    );
+  } else status = false;
 
-  encryptionStr(str);
-  showResult(encryptionString.join(""));
-  
+  return status;
 }
 
 function encryptionStr(str) {
@@ -46,30 +57,37 @@ function encryptionStr(str) {
     "Z",
   ];
 
-  [...str].forEach((el) => {
+  [...str].map((el) => {
     const indexEl = alphabet.indexOf(el.toUpperCase());
     if (indexEl >= 0) {
       const indexElemnetInAlphabeth = (indexEl + 13) % alphabet.length;
-      
-      if(el === el.toLowerCase()){
+      const isElementLowerCase = el === el.toLowerCase();
+
+      if (isElementLowerCase) {
         encryptionString.push(alphabet[indexElemnetInAlphabeth].toLowerCase());
-      }else{
-        encryptionString.push(alphabet[indexElemnetInAlphabeth])
+      } else {
+        encryptionString.push(alphabet[indexElemnetInAlphabeth]);
       }
-      
-
-
     } else {
       encryptionString.push(el);
     }
   });
+
+  showResult(encryptionString.join(""), false);
 }
 
-function showResult(text = "wpidz ciąg znaków") {
+function showResult(text, classCss) {
   result.classList.add("active");
-  resultText.textContent = text;
+
+  if (classCss) {
+    resultText.classList.add("v");
+    return (resultText.textContent = text);
+  } else {
+    resultText.textContent = text;
+    resultText.classList.remove("v");
+  }
+
   encryptionString = [];
 }
-
 
 export default caesar;

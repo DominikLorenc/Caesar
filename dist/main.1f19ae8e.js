@@ -138,27 +138,36 @@ var resultText = document.querySelector(".result-text");
 var encryptionString = [];
 
 function caesar(str) {
+  var validateStatus = validateInput(str);
+  if (!validateStatus) encryptionStr(str);
+}
+
+function validateInput(str) {
   var regex = /^[a-zA-Z0-9 ]*$/;
+  var status;
 
-  if (str === "" || !regex.test(str)) {
-    showResult();
-    throw new Error('value must be a string');
-  }
+  if (!str.length > 0) {
+    status = true;
+    resultText.textContent = showResult("Nic nie wpisałeś", true);
+  } else if (!regex.test(str)) {
+    status = true;
+    resultText.textContent = showResult("tekst nie może zawierac polskich znaków i znaków specjalnych", true);
+  } else status = false;
 
-  encryptionStr(str);
-  showResult(encryptionString.join(""));
+  return status;
 }
 
 function encryptionStr(str) {
   var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-  _toConsumableArray(str).forEach(function (el) {
+  _toConsumableArray(str).map(function (el) {
     var indexEl = alphabet.indexOf(el.toUpperCase());
 
     if (indexEl >= 0) {
       var indexElemnetInAlphabeth = (indexEl + 13) % alphabet.length;
+      var isElementLowerCase = el === el.toLowerCase();
 
-      if (el === el.toLowerCase()) {
+      if (isElementLowerCase) {
         encryptionString.push(alphabet[indexElemnetInAlphabeth].toLowerCase());
       } else {
         encryptionString.push(alphabet[indexElemnetInAlphabeth]);
@@ -167,12 +176,21 @@ function encryptionStr(str) {
       encryptionString.push(el);
     }
   });
+
+  showResult(encryptionString.join(""), false);
 }
 
-function showResult() {
-  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "wpidz ciąg znaków";
+function showResult(text, classCss) {
   result.classList.add("active");
-  resultText.textContent = text;
+
+  if (classCss) {
+    resultText.classList.add("v");
+    return resultText.textContent = text;
+  } else {
+    resultText.textContent = text;
+    resultText.classList.remove("v");
+  }
+
   encryptionString = [];
 }
 
@@ -221,7 +239,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60472" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62119" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
