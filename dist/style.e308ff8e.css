@@ -38,7 +38,7 @@ h1 {
   width: 100%;
 }
 
-.input {
+.input, .rot {
   text-align: center;
   padding: 8px 0;
   font-size: 24px;
@@ -48,6 +48,7 @@ h1 {
   border-bottom: 3px solid green;
   outline: none;
   transition: all 0.2s ease-in;
+  margin-bottom: 10px;
 }
 
 .input::placeholder {
@@ -99,10 +100,9 @@ h1 {
   font-size: 28px;
   color: black;
   text-align: center;
-  
 }
 
-.result-text.v{
+.result-text.v {
   color: red;
   font-size: 24px;
 }
@@ -117,5 +117,13 @@ h1 {
   }
 }
 
+.rot{
+  letter-spacing: 4px;
+}
+
+select{
+  width: 60px;
+  font-size: 24px;
+}
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */

@@ -1,12 +1,12 @@
 const result = document.querySelector(".result");
 const resultText = document.querySelector(".result-text");
 
+
 let encryptionString = [];
 
 function caesar(str) {
   const validateStatus = validateInput(str);
-  if (!validateStatus) encryptionStr(str)
- 
+  if (!validateStatus) encryptionStr(str);
 }
 
 function validateInput(str) {
@@ -28,6 +28,7 @@ function validateInput(str) {
 }
 
 function encryptionStr(str) {
+  const rotNumber = document.getElementById("rot-number").value;
   const alphabet = [
     "A",
     "B",
@@ -56,11 +57,11 @@ function encryptionStr(str) {
     "Y",
     "Z",
   ];
-
   [...str].map((el) => {
     const indexEl = alphabet.indexOf(el.toUpperCase());
+
     if (indexEl >= 0) {
-      const indexElemnetInAlphabeth = (indexEl + 13) % alphabet.length;
+      const indexElemnetInAlphabeth = (indexEl + parseInt(rotNumber)) % alphabet.length
       const isElementLowerCase = el === el.toLowerCase();
 
       if (isElementLowerCase) {

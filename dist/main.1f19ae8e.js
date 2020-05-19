@@ -158,13 +158,14 @@ function validateInput(str) {
 }
 
 function encryptionStr(str) {
+  var rotNumber = document.getElementById("rot-number").value;
   var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
   _toConsumableArray(str).map(function (el) {
     var indexEl = alphabet.indexOf(el.toUpperCase());
 
     if (indexEl >= 0) {
-      var indexElemnetInAlphabeth = (indexEl + 13) % alphabet.length;
+      var indexElemnetInAlphabeth = (indexEl + parseInt(rotNumber)) % alphabet.length;
       var isElementLowerCase = el === el.toLowerCase();
 
       if (isElementLowerCase) {
@@ -199,7 +200,7 @@ exports.default = _default;
 },{}],"main.js":[function(require,module,exports) {
 "use strict";
 
-var _caesar = _interopRequireDefault(require("./modules/caesar13"));
+var _caesar = _interopRequireDefault(require("/modules/caesar13"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -211,7 +212,7 @@ form.addEventListener("submit", function (e) {
   (0, _caesar.default)(inputText.value);
   inputText.value = "";
 });
-},{"./modules/caesar13":"modules/caesar13.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"/modules/caesar13":"modules/caesar13.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -239,7 +240,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62119" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55566" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
